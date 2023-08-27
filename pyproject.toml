@@ -19,3 +19,8 @@ classifiers = [
 
 [project.urls]
 "Homepage" = "https://github.com/danforthcenter/edic"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
