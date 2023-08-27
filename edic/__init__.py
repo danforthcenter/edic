@@ -22,3 +22,40 @@ class Image(np.ndarray):
         # Slice the array as requested but return an array of the same class
         # Idea from NumPy examples of subclassing:
         return super(Image, self).__getitem__(key)
+
+
+class BGR(Image):
+    """Subclass of Image for Blue, Green, Red (BGR) images."""
+
+    def __new__(cls, input_array: np.ndarray, filename: str):
+        return Image.__new__(cls, input_array, filename)
+
+    def __getitem__(self, key):
+        # Overwrite the __getitem__ method to return a GRAY object if the
+        # requested slice is 2D
+        new_arr = super(Image, self).__getitem__(key)
+        if len(new_arr.shape) == 2:
+            return GRAY(input_array=new_arr, filename=self.filename)
+        return new_arr
+
+
+class RGB(Image):
+    """Subclass of Image for Red, Green, Blue (RGB) images."""
+
+    def __new__(cls, input_array: np.ndarray, filename: str):
+        return Image.__new__(cls, input_array, filename)
+
+    def __getitem__(self, key):
+        # Overwrite the __getitem__ method to return a GRAY object if the
+        # requested slice is 2D
+        new_arr = super(Image, self).__getitem__(key)
+        if len(new_arr.shape) == 2:
+            return GRAY(input_array=new_arr, filename=self.filename)
+        return new_arr
+
+
+class GRAY(Image):
+    """Subclass of Image for grayscale images."""
+
+    def __new__(cls, input_array: np.ndarray, filename: str):
+        return Image.__new__(cls, input_array, filename)
