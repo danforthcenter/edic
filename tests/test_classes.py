@@ -26,10 +26,22 @@ def test_bgr():
     assert isinstance(bgr, BGR)
 
 
+def test_bgr_slice():
+    """Test subsetting a BGR image."""
+    bgr = BGR(input_array=np.zeros((10, 10, 3), dtype=np.uint8), filename="bgr.png")
+    assert bgr[0:5, 0:5].shape == (5, 5, 3)
+
+
 def test_rgb():
     """Test creating a RGB class image."""
     bgr = RGB(input_array=np.zeros((10, 10, 3), dtype=np.uint8), filename="rgb.png")
     assert isinstance(bgr, RGB)
+
+
+def test_rgb_slice():
+    """Test subsetting an RGB image."""
+    rgb = RGB(input_array=np.zeros((10, 10, 3), dtype=np.uint8), filename="rgb.png")
+    assert rgb[0:5, 0:5].shape == (5, 5, 3)
 
 
 def test_gray():
