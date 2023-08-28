@@ -15,7 +15,7 @@ class Image(np.ndarray):
 
     def __array_finalize__(self, obj):
         if obj is not None:
-            self.filename = getattr(obj, "uri", None)
+            self.uri = getattr(obj, "uri", None)
 
     def __getitem__(self, key):
         # Enhance the np.ndarray __getitem__ method
