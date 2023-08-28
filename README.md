@@ -1,1 +1,1 @@
-# edic
+# Extensible Image Data Classes (EIDC)
